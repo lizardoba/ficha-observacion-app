@@ -151,4 +151,61 @@ async function eliminarFicha(id) {
   }
 }
 
+      // GitHub Sync Integration
+// Sincronizar fichas cuando se guarden
+async function sincronizarFichaAGitHub(ficha) {
+  try {
+    const sync = obtenerGitHubSync();
+    if (!sync) {
+      console.log('GitHub Sync no está configurado');
+      return;
+    }
+
+    const config = obtenerConfiguracion();
+    if (!config.AUTO_SYNC) {
+      console.log('Sincronización automática deshabilitada');
+      return;
+    }
+
+    const resultado = await sync.sincronizarFicha(ficha);
+    if (resultado && config.SHOW_NOTIFICATIONS) {
+      alert('Ficha sincronizada con GitHub exitosamente');
+    }
+  } catch (error) {
+    console.error('Error sincronizando con GitHub:', error);
+  }
+}
+
+// Modificar la función guardarFicha para incluir sincronización
+const guardarFichaOriginal = window.guardarFicha;
+window.guardarFicha = async function(eventos) {
+  // Llamar a la función original
+  const resultado = await guardarFichaOriginal(eventos);
+  
+  // Si se guardó exitosamente, sincronizar con GitHub
+  if (resultado && fichaEditandoId) {
+    const ficha = await fichaDB.obtener(fichaEditandoId);
+    if (ficha) {
+      sincronizarFichaAGitHub(ficha);
+    }
+  }
+  
+  return resultado;
+};
+
+// Inicializar GitHub Sync al cargar la app
+window.addEventListener('load', () => {
+  try {
+    if (window.inicializarSincronizacion) {
+      const sync = inicializarSincronizacion();
+      if (sync) {
+        console.log('GitHub Sync iniciado correctamente');
+      }
+    }
+  } catch (error) {
+    console.warn('No fue posible inicializar GitHub Sync:', error);
+  }
+});
+
+
 document.addEventListener('DOMContentLoaded', init);
