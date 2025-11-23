@@ -38,7 +38,7 @@ input[type="radio"] { cursor: pointer; width: 18px; height: 18px; }
 .eval-table tr:hover { background: #f0f0f0; }
 .eval-table td { padding: 12px; }
 .eval-table td:first-child { font-weight: 600; color: #333; width: 70%; }
-.eval-table td:last-child { display: flex; gap: 15px; justify-content: space-around; }
+.eval-table td.eval-table td:last-child { display: grid; grid-template-columns: repeat(3, 1fr); place-items: center; gap: 0; }
 .eval-table thead { display: table; width: 100%; }
 .eval-table thead tr { display: table-row; width: 100%; }
 .eval-table th { display: table-cell; padding: 12px; font-weight: 700; background-color: #f5f5f5; border-bottom: 2px solid #ddd; text-align: center; width: 25%; }
