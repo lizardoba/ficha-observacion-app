@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha de Observación - Gniius</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#5B4FA3">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Ficha de Observación</h1>
+            <p>Centro Integral Infantil y Familiar - Gniius</p>
+            <nav>
+                <button id="btnNuevaFicha" class="btn-nav">Nueva Ficha</button>
+                <button id="btnMisFichas" class="btn-nav active">Mis Fichas</button>
+            </nav>
+        </header>
+
+        <section id="vistaMisFichas" class="vista activa">
+            <h2>Fichas Guardadas</h2>
+            <div id="listaFichas" class="lista-fichas"></div>
+        </section>
+
+        <section id="vistaFormulario" class="vista">
+            <form id="formFicha" class="form-ficha">
+                <!-- PÁGINA 1 -->
+                <div class="page" data-page="1">
+                    <h2>Página 1: Datos Personales (1/4)</h2>
+                    
+                    <fieldset>
+                        <legend>Datos Personales</legend>
+                        <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+                        <input type="date" id="fechaNacimiento" name="fechaNacimiento" placeholder="Fecha de Nacimiento">
+                        <input type="text" id="edadExactos" name="edadExactos" placeholder="Edad exacta (ej: 2años 3 meses)">
+                        <div class="radio-group">
+                            <label><input type="radio" name="genero" value="Masculino"> Masculino</label>
+                            <label><input type="radio" name="genero" value="Femenino"> Femenino</label>
+                        </div>
+                        <input type="text" id="dni" name="dni" placeholder="DNI">
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Desarrollo</legend>
+                        <input type="text" id="controlCabeza" name="controlCabeza" placeholder="Control de cabeza">
+                        <input type="text" id="tipoAlimentacion" name="tipoAlimentacion" placeholder="Tipo de alimentación">
+                        <input type="text" id="primerasPalabras" name="primerasPalabras" placeholder="Primeras palabras">
+                        <input type="text" id="rutinaSueno" name="rutinaSueno" placeholder="Rutina de sueño">
+                        <textarea id="habitos" name="habitos" placeholder="Hábitos" rows="2"></textarea>
+                        <textarea id="nivelAutonomo" name="nivelAutonomo" placeholder="Nivel de autonomía" rows="2"></textarea>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Salud</legend>
+                        <textarea id="alergias" name="alergias" placeholder="Alergias" rows="2"></textarea>
+                        <textarea id="antecedentes" name="antecedentes" placeholder="Antecedentes familiares" rows="2"></textarea>
+                        <textarea id="enfermedadesFrecuentes" name="enfermedadesFrecuentes" placeholder="Enfermedades frecuentes" rows="2"></textarea>
+                        <textarea id="diagnosticosPrevios" name="diagnosticosPrevios" placeholder="Diagnósticos previos" rows="2"></textarea>
+                        <div class="radio-group">
+                            <label><input type="radio" name="vacunasDia" value="Sí"> Vacunas al día - Sí</label>
+                            <label><input type="radio" name="vacunasDia" value="No"> Vacunas al día - No</label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Apoderado</legend>
+                        <input type="text" id="nombreApoderado" name="nombreApoderado" placeholder="Nombre completo" required>
+                        <input type="text" id="dniApoderado" name="dniApoderado" placeholder="DNI">
+                        <input type="tel" id="telefonoApoderado" name="telefonoApoderado" placeholder="Teléfono">
+                        <input type="text" id="ocupacion" name="ocupacion" placeholder="Ocupación">
+                        <input type="text" id="relacionNino" name="relacionNino" placeholder="Relación con el niño">
+                    </fieldset>
+                </div>
+
+                <!-- PÁGINA 2 -->
+                <div class="page" data-page="2">
+                    <h2>Página 2: Área Cognitiva (2/4)</h2>
+                    <fieldset>
+                        <legend>Área Cognitiva</legend>
+                        <table class="eval-table">
+                            <tr>
+                                <td>Explora objetos con curiosidad</td>
+                                <td><input type="radio" name="cog_explora" value="Sí"> <input type="radio" name="cog_explora" value="En proceso"> <input type="radio" name="cog_explora" value="No"></td>
+                            </tr>
+                            <tr>
+                                <td>Reconoce colores o formas simples</td>
+                                <td><input type="radio" name="cog_colores" value="Sí"> <input type="radio" name="cog_colores" value="En proceso"> <input type="radio" name="cog_colores" value="No"></td>
+                            </tr>
+                            <tr>
+                                <td>Identifica animales, objetos o personas conocidas</td>
+                                <td><input type="radio" name="cog_identifica" value="Sí"> <input type="radio" name="cog_identifica" value="En proceso"> <input type="radio" name="cog_identifica" value="No"></td>
+                            </tr>
+                            <tr>
+                                <td>Mantiene la atención durante la actividad</td>
+                                <td><input type="radio" name="cog_atencion" value="Sí"> <input type="radio" name="cog_atencion" value="En proceso"> <input type="radio" name="cog_atencion" value="No"></td>
+                            </tr>
+                            <tr>
+                                <td>Resuelve pequeñas situaciones (encajar, apilar, abrir)</td>
+                                <td><input type="radio" name="cog_resuelve" value="Sí"> <input type="radio" name="cog_resuelve" value="En proceso"> <input type="radio" name="cog_resuelve" value="No"></td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </div>
+
+                <!-- PÁGINA 3 -->
+                <div class="page" data-page="3">
+                    <h2>Página 3: Área del Lenguaje (3/4)</h2>
+                    <fieldset>
+                        <legend>Área del Lenguaje</legend>
+                        <table class="eval-table">
+                            <tr>
+                                <td>Emite sonidos, palabras o frases cortas</td>
+                                <td><input type="radio" name="len_emite" value="Sí"> <input type="radio" name="len_emite" value="En proceso"> <input type="radio" name="len_emite" value="No"></td>
+                            </tr>
+                            <tr>
+                                <td>Comprende instrucciones simples</td>
+                                <td><input type="radio" name="len_comprende" value="Sí"> <input type="radio" name="len_comprende" value="En proceso"> <input type="radio" name="len_comprende" value="No"></td>
+                            </tr>
+                            <tr>
+                                <td>Nombra objetos o animales familiares</td>
+                                <td><input type="radio" name="len_nombra" value="Sí"> <input type="radio" name="len_nombra" value="En proceso"> <input type="radio" name="len_nombra" value="No"></td>
+                            </tr>
+                            <tr>
+                                <td>Se comunica mediante gestos o palabras</td>
+                                <td><input type="radio" name="len_comunica" value="Sí"> <input type="radio" name="len_comunica" value="En proceso"> <input type="radio" name="len_comunica" value="No"></td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </div>
+
+                <!-- PÁGINA 4 -->
+                <div class="page" data-page="4">
+                    <h2>Página 4: Áreas Motriz y Socioemocional (4/4)</h2>
+                    <fieldset>
+                        <legend>Área Motriz</legend>
+                        <table class="eval-table">
+                            <tr>
+                                <td>Se desplaza con seguridad (gatea, camina, corre)</td>
+                                <td><input type="radio" name="mot_desplaza" value="Sí"> <input type="radio" name="mot_desplaza" value="En proceso"> <input type="radio" name="mot_desplaza" value="No"></td>
+                            </tr>
+                            <tr>
+                                <td>Salta o trepa con apoyo</td>
+                                <td><input type="radio" name="mot_salta" value="Sí"> <input type="radio" name="mot_salta" value="En proceso"> <input type="radio" name="mot_salta" value="No"></td>
+                            </tr>
+                            <tr>
+                                <td>Manipula objetos pequeños con precisión</td>
+                                <td><input type="radio" name="mot_manipula" value="Sí"> <input type="radio" name="mot_manipula" value="En proceso"> <input type="radio" name="mot_manipula" value="No"></td>
+                            </tr>
+                            <tr>
+                                <td>Realiza trazos o garabatos con intención</td>
+                                <td><input type="radio" name="mot_trazos" value="Sí"> <input type="radio" name="mot_trazos" value="En proceso"> <input type="radio" name="mot_trazos" value="No"></td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Área Socioemocional</legend>
+                        <table class="eval-table">
+                            <tr>
+                                <td>Participa con agrado en las actividades</td>
+                                <td><input type="radio" name="soc_participa" value="Sí"> <input type="radio" name="soc_participa" value="En proceso"> <input type="radio" name="soc_participa" value="No"></td>
+                            </tr>
+                            <tr>
+                                <td>Comparte materiales o interactúa con otros niños</td>
+                                <td><input type="radio" name="soc_comparte" value="Sí"> <input type="radio" name="soc_comparte" value="En proceso"> <input type="radio" name="soc_comparte" value="No"></td>
+                            </tr>
+                            <tr>
+                                <td>Expresa sus emociones (alegría, tristeza, enojo, sorpresa)</td>
+                                <td><input type="radio" name="soc_expresa" value="Sí"> <input type="radio" name="soc_expresa" value="En proceso"> <input type="radio" name="soc_expresa" value="No"></td>
+                            </tr>
+                            <tr>
+                                <td>Muestra confianza y seguridad en nuevas experiencias</td>
+                                <td><input type="radio" name="soc_confianza" value="Sí"> <input type="radio" name="soc_confianza" value="En proceso"> <input type="radio" name="soc_confianza" value="No"></td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" id="btnAnterior" class="btn">Anterior</button>
+                    <button type="button" id="btnSiguiente" class="btn">Siguiente</button>
+                    <button type="submit" class="btn btn-primary">Guardar Ficha</button>
+                    <button type="button" id="btnCancelar" class="btn btn-danger">Cancelar</button>
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <script src="db.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
